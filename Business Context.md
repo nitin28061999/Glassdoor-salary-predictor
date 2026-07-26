@@ -8,6 +8,7 @@ and develop a machine learning model that predicts salaries based on job
 attributes.
 
 The insights can help:
+
 - Job Seekers
 - HR Teams
 - Recruiters
