@@ -2,13 +2,17 @@
     "python-envs.defaultEnvManager": "ms-python.python:system",
     "cSpell.words": [
         "cheminformatics",
+        "figsize",
         "ggplot",
         "Glassdoor",
         "Goleta",
+        "histplot",
         "Linthicum",
         "matplotlib",
         "PNNL",
         "triaging",
-        "UMMS"
+        "UMMS",
+        "xlabel",
+        "ylabel"
     ]
 }
