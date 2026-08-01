@@ -1,5 +1,5 @@
 ﻿import streamlit as st
-from eda import *
+from app.eda import salary_distribution, top_job_titles, company_size_salary
 
 st.title("📊 Exploratory Data Analysis")
 

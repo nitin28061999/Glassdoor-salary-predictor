@@ -1,7 +1,9 @@
 ﻿import pandas as pd
 import plotly.express as px
+from pathlib import Path
 
-df = pd.read_csv("../data/processed/glassdoor_jobs_cleaned.csv")
+DATA_FILE = Path(__file__).resolve().parent.parent / "Data" / "processed" / "glassdoor_jobs_cleaned.csv"
+df = pd.read_csv(DATA_FILE)
 
 
 def salary_distribution():  # sourcery skip: inline-immediately-returned-variable
