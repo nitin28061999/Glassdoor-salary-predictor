@@ -1,4 +1,4 @@
-﻿from app.gemini_helper import ask_gemini
+﻿from agemini_helper import ask_gemini # pyright: ignore[reportUndefinedVariable, reportUnusedExpression, reportMissingImports]
 
 question = "What is Machine Learning?"
 
