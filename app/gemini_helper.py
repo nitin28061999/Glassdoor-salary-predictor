@@ -1,33 +1,45 @@
 ﻿import os
+import pandas as pd
 from dotenv import load_dotenv
 import google.generativeai as genai
-from google.generativeai.generative_models import GenerativeModel
 
-# Load environment variables
 load_dotenv()
 
-# Configure Gemini
-api_key = os.getenv("GEMINI_API_KEY")
-if api_key:
-    os.environ["GEMINI_API_KEY"] = api_key
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-# Initialize Gemini
-genai.configure(api_key=api_key) # pyright: ignore[reportPrivateImportUsage]
+model = genai.GenerativeModel("gemini-2.5-flash")
 
-# Initialize Gemini model name
-MODEL_NAME = "gemini-2.5-flash"
+# Load dataset
+df = pd.read_csv("../data/processed/glassdoor_jobs_cleaned.csv")
 
 
 def ask_gemini(question):
-    prompt = f"""
-You are an AI assistant for a Glassdoor Salary Prediction project.
 
-Answer the following question in a clear, professional, and concise manner.
+    dataset_summary = f"""
+Dataset Information
+
+Number of records: {len(df)}
+
+Columns:
+{', '.join(df.columns)}
+
+Salary Statistics:
+{df['Average Salary'].describe().to_string()}
+"""
+
+    prompt = f"""
+You are an AI assistant helping users understand a Glassdoor Salary Prediction project.
+
+Use the following dataset summary when answering.
+
+{dataset_summary}
 
 Question:
 {question}
+
+Provide a clear and professional answer.
 """
 
-    model = genai.GenerativeModel(model_name=MODEL_NAME) # pyright: ignore[reportPrivateImportUsage]
     response = model.generate_content(prompt)
+
     return response.text
