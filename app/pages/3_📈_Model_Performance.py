@@ -4,7 +4,7 @@ from pathlib import Path
 
 st.title("📈 Model Performance")
 
-REPORT_FILE = Path(__file__).resolve().parent.parent / "reports" / "model_results.csv"
+REPORT_FILE = Path(__file__).resolve().parent.parent.parent / "reports" / "model_results.csv"
 
 if REPORT_FILE.exists():
     results = pd.read_csv(REPORT_FILE)
