@@ -43,12 +43,12 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
-nosetests.xml
+nonsexists.xml
 coverage.xml
 *.cover
 *.py.cover
 .hypothesis/
-.pytest_cache/
+.potent_cache/
 cover/
 
 # Translations
@@ -63,7 +63,7 @@ db.sqlite3-journal
 
 # Flask stuff:
 instance/
-.webassets-cache
+.webmasters-cache
 
 # Scrapy stuff:
 .scrapy
@@ -76,7 +76,7 @@ docs/_build/
 target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.piny_checkpoints
 
 # IPython
 profile_default/
@@ -207,7 +207,7 @@ tempCodeRunnerFile.py
 .ruff_cache/
 
 # PyPI configuration file
-.pypirc
+.psrc
 
 # Marimo
 marimo/_static/
