@@ -1,20 +1,14 @@
 ﻿import streamlit as st
+import pandas as pd
 
 st.title("📈 Model Performance")
 
-st.markdown("""
-### Models Used
+results = pd.read_csv("../reports/model_results.csv")
 
-- Linear Regression
-- Decision Tree
-- Random Forest ✅
-- Gradient Boosting
+st.dataframe(results)
 
-### Evaluation Metrics
+best_model = results.sort_values("R2", ascending=False).iloc[0]
 
-- R² Score
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-
-The Random Forest model achieved the best performance and was selected for deployment.
-""")
+st.success(
+    f"Best Model: {best_model['Model']} (R² = {best_model['R2']:.3f})"
+)
