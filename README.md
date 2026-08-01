@@ -42,4 +42,4 @@ Predict employee salaries using machine learning.
 
 ```bash
 pip install -r requirements.txt
-streamlit run app/app.py
+streamlit run app/main.py
