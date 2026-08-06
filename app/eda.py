@@ -27,12 +27,13 @@ def _valid_age_df():
     return df[(df["Company Age"] > 0) & (df["Company Age"] < 300)]
 
 
-def salary_distribution():
+def salary_distribution():  # sourcery skip: inline-immediately-returned-variable
     fig = px.histogram(df, x="Average Salary", nbins=25, title="Salary Distribution", marginal="box")
     return fig
 
 
 def salary_boxplot_overall():
+    # sourcery skip: inline-immediately-returned-variable
     fig = px.box(df, y="Average Salary", points="outliers", title="Overall Salary Spread & Outliers")
     return fig
 
@@ -70,17 +71,18 @@ def min_max_salary_range():
     return fig
 
 
-def rating_distribution():
+def rating_distribution():  # sourcery skip: inline-immediately-returned-variable
     fig = px.histogram(df, x="Rating", nbins=20, title="Company Rating Distribution")
     return fig
 
 
-def company_size_salary():
+def company_size_salary():  # sourcery skip: inline-immediately-returned-variable
     fig = px.violin(df, x="Size", y="Average Salary", box=True, points=False, title="Salary by Company Size")
     return fig
 
 
 def ownership_distribution():
+    # sourcery skip: inline-immediately-returned-variable
     counts = df["Type of ownership"].value_counts().reset_index()
     counts.columns = ["Type of ownership", "Count"]
     fig = px.pie(counts, names="Type of ownership", values="Count", title="Job Postings by Ownership Type", hole=0.4)
@@ -110,28 +112,28 @@ def salary_by_industry():
     return fig
 
 
-def salary_by_state():
+def salary_by_state():  # sourcery skip: inline-immediately-returned-variable
     top = (df.groupby("State")["Average Salary"].mean().sort_values(ascending=False).head(10).reset_index())
     fig = px.bar(top, x="State", y="Average Salary", title="Top 10 States by Average Salary")
     return fig
 
 
-def job_count_by_state():
+def job_count_by_state():  # sourcery skip: inline-immediately-returned-variable
     counts = df["State"].value_counts().head(10).reset_index()
     counts.columns = ["State", "Postings"]
     fig = px.bar(counts, x="State", y="Postings", title="Top 10 States by Job Posting Volume")
     return fig
 
 
-def correlation_heatmap():
+def correlation_heatmap():  # sourcery skip: inline-immediately-returned-variable
     numeric_cols = ["Rating", "Min Salary", "Max Salary", "Average Salary", "Company Age"]
     sub = _valid_age_df()[numeric_cols]
     corr = sub.corr()
-    fig = px.imshow(corr, text_auto=".2f", title="Correlation Between Numeric Features", color_continuous_scale="RdBu_r", zmin=-1, zmax=1)
+    fig = px.imshow(corr, text_auto=".2f", title="Correlation Between Numeric Features", color_continuous_scale="RdBu_r", zmin=-1, zmax=1) # pyright: ignore[reportArgumentType]
     return fig
 
 
-def age_vs_salary():
+def age_vs_salary():  # sourcery skip: inline-immediately-returned-variable
     sub = _valid_age_df().copy()
     bins = [0, 5, 10, 20, 50, 100, 300]
     labels = ["0-5", "6-10", "11-20", "21-50", "51-100", "100+"]
@@ -141,6 +143,6 @@ def age_vs_salary():
     return fig
 
 
-def rating_vs_salary():
+def rating_vs_salary():  # sourcery skip: inline-immediately-returned-variable
     fig = px.scatter(df, x="Rating", y="Average Salary", opacity=0.5, marginal_y="histogram", title="Company Rating vs Average Salary")
     return fig
